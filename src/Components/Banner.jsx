@@ -1,27 +1,17 @@
-import { useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { HiOutlineArrowRightCircle } from "react-icons/hi2";
 import MePic from "../assets/Images/My_Picture.webp";
 import "../StyleSheets/banner.css";
 
 const roles = ["Ingeniero de Software", "Desarrollador Backend", "Desarrollo Agile"];
 
-const RotatingRole = () => {
+const RotatingRole = memo(() => {
     const [loopNum, setLoopNum] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
     const [delta, setDelta] = useState(150 - Math.random() * 100);
     const [text, setText] = useState("");
 
-    useEffect(() => {
-        const ticker = setInterval(() => {
-            tick();
-        }, delta);
-
-        return () => {
-            clearInterval(ticker);
-        };
-    }, [text, delta]);
-
-    const tick = () => {
+    const tick = useCallback(() => {
         const i = loopNum % roles.length;
         const fullText = roles[i];
         const updatedText = isDeleting
@@ -39,10 +29,18 @@ const RotatingRole = () => {
             setLoopNum((currentLoop) => currentLoop + 1);
             setDelta(500);
         }
-    };
+    }, [delta, isDeleting, loopNum, text]);
+
+    useEffect(() => {
+        const ticker = window.setTimeout(tick, delta);
+
+        return () => {
+            window.clearTimeout(ticker);
+        };
+    }, [delta, tick]);
 
     return <span className="wrap">{text}</span>;
-};
+});
 
 export const Banner = () => {
     const scrollToPageEnd = () => {
@@ -66,15 +64,16 @@ export const Banner = () => {
                                     className="banner-image"
                                     width="362"
                                     height="362"
+                                    loading="eager"
                                     fetchPriority="high"
                                     decoding="async"
                                 />
                             </div>
                         </div>
+                        <span className="banner-kicker banner-kicker-under">Disponible para crear soluciones robustas</span>
                     </div>
 
                     <div className="banner-copy">
-                        <span className="banner-kicker">Disponible para crear soluciones robustas</span>
                         <h1>{`Hola, soy Randy`}</h1>
                         <h2>
                             <RotatingRole />

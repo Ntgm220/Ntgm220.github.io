@@ -17,7 +17,7 @@
   --card-border-glow: rgba(173, 109, 255, 0.92);
   --card-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.03) inset,
-    0 14px 28px rgba(5, 1, 16, 0.28);
+    0 10px 22px rgba(5, 1, 16, 0.22);
   --card-hover-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.1) inset,
     0 0 22px rgba(195, 130, 255, 0.62),
@@ -39,6 +39,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
   scroll-padding-top: var(--anchor-offset);
 }
 
@@ -48,15 +49,14 @@ body {
   color: #ffffff;
   font-family: "JetBrains Mono", system-ui, sans-serif;
   padding-top: 75px;
-  background-color: #2a0247;
-  background-image: radial-gradient(
-    circle at 50% -15%,
-    rgba(157, 0, 255, 0.525) 0%, 
-    rgba(39, 0, 60, 0.2) 40%, 
-    rgba(0, 0, 0, 1) 85%
-  );
+  background-color: #020106;
+  background-image:
+    radial-gradient(circle at 0% 100%, rgba(102, 43, 166, 0.52) 0%, rgba(102, 43, 166, 0.18) 18%, transparent 42%),
+    radial-gradient(circle at 100% 0%, rgba(138, 72, 205, 0.48) 0%, rgba(138, 72, 205, 0.16) 20%, transparent 46%),
+    radial-gradient(circle at 82% 78%, rgba(88, 41, 150, 0.18) 0%, transparent 26%),
+    radial-gradient(circle at 20% 40%, rgba(52, 22, 92, 0.14) 0%, transparent 30%),
+    linear-gradient(135deg, #04030a 0%, #090612 34%, #120a21 68%, #09040f 100%);
   background-attachment: fixed;
-  background-repeat: no-repeat;
   min-height: 100vh;
 }
 
@@ -73,7 +73,7 @@ section[id],
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 1.5rem clamp(1rem, 3vw, 2rem);
+  padding: 1.5rem clamp(1rem, 3vw, 2rem) 0;  /* 0 en el bottom */
   text-align: left;
 }
 
@@ -153,6 +153,7 @@ img {
 .site-footer {
   content-visibility: auto;
   contain-intrinsic-size: 1px 760px;
+  overflow: hidden;
 }
 
 .me-card,
@@ -182,39 +183,14 @@ img {
 .contact-form-shell::before,
 .projects .card::before,
 .tecno-bx::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(197, 142, 255, 0.92));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  opacity: 0;
-  box-shadow: none;
-  transition: opacity 0.3s ease, box-shadow 0.3s ease;
-  pointer-events: none;
-  z-index: 2;
+  display: none;
 }
 
 .education-shell::after,
 .lang-card::after,
 .contact-form-shell::after,
 .tecno-bx::after {
-  content: "";
-  position: absolute;
-  left: -10%;
-  right: -10%;
-  bottom: -38%;
-  height: 62%;
-  border-radius: 999px;
-  background: radial-gradient(ellipse at center, rgba(191, 124, 255, 0.78) 0%, rgba(166, 98, 255, 0.62) 32%, rgba(134, 70, 248, 0.28) 58%, rgba(109, 52, 233, 0) 82%);
-  filter: blur(18px);
-  opacity: 0.22;
-  pointer-events: none;
-  z-index: 0;
+  display: none;
 }
 
 .section-title,
@@ -348,5 +324,17 @@ img {
     animation: none !important;
     transition-duration: 0.01ms !important;
     transition-delay: 0ms !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  #root {
+    padding: 1.25rem 1rem 0;
+  }
+}
+
+@media (max-width: 767px) {
+  #root {
+    padding: 1rem 0.9rem 0;
   }
 }

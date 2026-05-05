@@ -1,28 +1,32 @@
 /* ========================= Education ========================= */
 
 .education-section {
-  padding: 6px 0 34px;
+  padding: 5px 0 31px;
+}
+
+.education-section .section-title h2 {
+  font-size: 2.12rem;
 }
 
 .education-shell {
-  background: var(--card-surface);
-  border: 1px solid var(--card-border);
-  border-radius: 30px;
-  padding: 18px 26px;
-  box-shadow: var(--card-shadow);
+  background: rgba(33, 27, 49, 0.9);
+  border: 1px solid rgba(173, 141, 229, 0.28);
+  border-radius: 27px;
+  padding: 16px 23px;
+  box-shadow: 0 8px 16px rgba(5, 1, 16, 0.16);
 }
 
 .education-item {
   display: grid;
-  grid-template-columns: 112px 1fr;
-  gap: 24px;
+  grid-template-columns: 101px 1fr;
+  gap: 22px;
   align-items: center;
-  padding: 20px 0;
+  padding: 18px 0;
 }
 
 .education-badge {
-  width: 96px;
-  height: 96px;
+  width: 86px;
+  height: 86px;
   border-radius: 50%;
   position: relative;
   display: grid;
@@ -30,13 +34,13 @@
   background:
     radial-gradient(circle at center, rgba(24, 16, 30, 1) 60%, transparent 61%),
     conic-gradient(from 220deg, #2ad7ca, #7f63ff, #2ad7ca);
-  box-shadow: 0 0 0 10px rgba(94, 58, 154, 0.14);
+  box-shadow: 0 0 0 9px rgba(94, 58, 154, 0.14);
 }
 
 .education-badge::after {
   content: "";
   position: absolute;
-  inset: 8px;
+  inset: 7px;
   border-radius: 50%;
   background: rgba(24, 16, 30, 0.96);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -45,7 +49,7 @@
 .education-badge span {
   position: relative;
   z-index: 1;
-  font-size: 0.92rem;
+  font-size: 0.83rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: #f5f7ff;
@@ -53,26 +57,26 @@
 
 .education-body h3 {
   margin: 0 0 10px;
-  font-size: 1.35rem;
+  font-size: 1.22rem;
   font-weight: 700;
 }
 
 .education-body h4 {
   margin: 0 0 10px;
-  font-size: 0.98rem;
+  font-size: 0.88rem;
   font-weight: 500;
   color: #eef1fb;
 }
 
 .education-meta {
   color: #b48cff;
-  font-size: 0.98rem;
+  font-size: 0.88rem;
   letter-spacing: 0.03em;
 }
 
 @media (max-width: 1100px) {
   .education-section {
-    padding: 12px 0 28px;
+    padding: 11px 0 25px;
   }
 
   .education-shell {
@@ -83,31 +87,31 @@
 
 @media (max-width: 767px) {
   .education-section {
-    padding: 12px 0 22px;
+    padding: 11px 0 20px;
   }
 
   .education-shell {
-    border-radius: 24px;
-    padding: 16px 18px;
+    border-radius: 22px;
+    padding: 14px 16px;
   }
 
   .education-item {
     grid-template-columns: 1fr;
     justify-items: center;
     text-align: center;
-    gap: 18px;
-    padding: 18px 0 20px;
+    gap: 16px;
+    padding: 16px 0 18px;
   }
 
   .education-body h3 {
-    font-size: 1.08rem;
+    font-size: 0.97rem;
   }
 
   .education-body h4 {
-    font-size: 0.9rem;
+    font-size: 0.81rem;
   }
 
   .education-meta {
-    font-size: 0.92rem;
+    font-size: 0.83rem;
   }
 }

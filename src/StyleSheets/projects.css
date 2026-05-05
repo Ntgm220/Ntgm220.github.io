@@ -1,18 +1,22 @@
 /* ========================= Projects ========================= */
 
 .projects {
-    padding: 20px 0 10px;
+    padding: 18px 0 9px;
     color: #ffffff;
 }
 
 .proj-bx {
-    padding: 8px 20px 12px;
+    padding: 7px 18px 11px;
 }
 
 .title-bx {
     scroll-margin-top: calc(var(--anchor-offset) + 6px);
     text-align: left;
-    margin-bottom: 22px;
+    margin-bottom: 20px;
+}
+
+.projects .title-bx h2 {
+    font-size: 2.12rem;
 }
 
 .title-bx h2 {
@@ -31,35 +35,37 @@
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
-    gap: 18px;
+    gap: 16px;
+    contain: layout paint;
 }
 
 .project-card-col {
-    flex: 0 0 calc(50% - 9px);
-    max-width: calc(50% - 9px);
+    flex: 0 0 calc(50% - 8px);
+    max-width: calc(50% - 8px);
     margin-bottom: 0 !important;
     display: flex;
+    contain: layout paint;
 }
 
 .projects .card {
     width: 100%;
     max-width: none;
-    background: var(--card-surface);
-    border: 1px solid var(--card-border);
-    border-radius: 30px;
+    background: rgba(33, 27, 49, 0.9);
+    border: 1px solid rgba(173, 141, 229, 0.28);
+    border-radius: 27px;
     overflow: hidden;
-    box-shadow: var(--card-shadow);
+    box-shadow: 0 8px 16px rgba(5, 1, 16, 0.16);
     height: 100%;
     display: flex;
     flex-direction: column;
     flex: 1;
-    min-height: 390px;
+    min-height: 351px;
 }
 
 .projects .card-body {
-    padding: 22px 18px 20px;
+    padding: 20px 16px 18px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    min-height: 146px;
+    min-height: 132px;
     flex: 1 0 auto;
 }
 
@@ -70,15 +76,15 @@
 .projects .card-title,
 .projects .card-title h3 {
     color: #fff;
-    font-size: 1.15rem;
+    font-size: 1.04rem;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 9px;
 }
 
 .projects .card-text {
     color: #cdcdcd;
-    font-size: 0.95rem;
-    line-height: 1.65;
+    font-size: 0.86rem;
+    line-height: 1.5;
     margin-bottom: 0;
 }
 
@@ -97,11 +103,11 @@
     background-color: transparent;
     color: var(--accent-primary);
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    font-size: 0.85rem;
+    font-size: 0.77rem;
     font-weight: 600;
     text-transform: uppercase;
-    min-height: 38px;
-    padding: 11px 18px;
+    min-height: 34px;
+    padding: 10px 16px;
     line-height: 1.2;
 }
 
@@ -112,50 +118,50 @@
     font-weight: 700;
     text-align: center;
     justify-content: center;
-    min-height: 40px;
-    padding: 12px 18px;
+    min-height: 36px;
+    padding: 11px 16px;
 }
 
 .projects-more {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 18px;
 }
 
 .projects-more-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 220px;
-    padding: 12px 24px;
+    min-width: 198px;
+    padding: 11px 22px;
     border-radius: 999px;
     border: 1px solid rgba(180, 140, 255, 0.46);
     background: linear-gradient(135deg, rgba(90, 21, 150, 0.92), rgba(121, 42, 181, 0.72));
     color: #ffffff;
-    font-size: 0.95rem;
+    font-size: 0.86rem;
     font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    box-shadow: 0 10px 22px rgba(52, 0, 95, 0.18);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    box-shadow: 0 8px 16px rgba(52, 0, 95, 0.12);
+    transition: transform 0.22s ease, border-color 0.22s ease, background-color 0.22s ease;
 }
 
 .projects-more-link:hover {
     color: #ffffff;
     border-color: rgba(255, 255, 255, 0.45);
     transform: translateY(-2px);
-    box-shadow: 0 18px 40px rgba(82, 8, 143, 0.3);
+    background: linear-gradient(135deg, rgba(96, 27, 158, 0.92), rgba(127, 48, 187, 0.72));
 }
 
 @media (max-width: 1100px) {
     .projects {
-        padding: 26px 0 20px;
+        padding: 23px 0 18px;
     }
 
     .proj-bx {
         max-width: 760px;
         margin-inline: auto;
-        padding: 6px 0 12px;
+        padding: 5px 0 11px;
     }
 
     .title-bx p {
@@ -178,14 +184,14 @@
     }
 
     .projects-more {
-        margin-top: 14px;
+        margin-top: 13px;
         margin-bottom: 10px;
     }
 }
 
 @media (max-width: 767px) {
     .projects {
-        padding: 24px 0 18px;
+        padding: 22px 0 16px;
     }
 
     .proj-bx {
@@ -202,19 +208,19 @@
     }
 
     .projects .card-body {
-        padding: 20px 16px 18px;
+        padding: 18px 14px 16px;
         min-height: auto;
     }
 
     .projects-more-link {
         width: 100%;
         min-width: 0;
-        padding: 11px 18px;
-        font-size: 0.88rem;
+        padding: 10px 16px;
+        font-size: 0.79rem;
     }
 
     .projects-more {
-        margin-top: 14px;
+        margin-top: 13px;
         margin-bottom: 10px;
     }
 }

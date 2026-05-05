@@ -10,7 +10,15 @@ export const Footer = () => {
                 <div className="footer-shell">
                     <div className="footer-brand">
                         <a className="footer-logo-link" href="#home" aria-label="Volver al inicio">
-                            <img className="footer-logo" src={MySiteLogo} alt="My Site Logo" />
+                            <img
+                                className="footer-logo"
+                                src={MySiteLogo}
+                                alt="My Site Logo"
+                                width="96"
+                                height="96"
+                                loading="lazy"
+                                decoding="async"
+                            />
                         </a>
                         <div className="footer-copy">
                             <p className="footer-name">Portfolio personal</p>

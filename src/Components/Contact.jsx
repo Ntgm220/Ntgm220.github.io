@@ -17,7 +17,9 @@ export const Contact = () => {
                             saludar, puedes escribirme directamente al correo que aparece debajo.
                         </p>
                     </div>
-
+                    <p>
+                        ¡Contactate conmigo aqui!
+                    </p>
                     <a
                         className="contact-mail-link"
                         href="mailto:Randymade220@gmail.com?subject=Me%20interesa%20trabajar%20contigo"

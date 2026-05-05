@@ -2,38 +2,42 @@
 
 .me-section {
   margin-top: 14px;
-  padding: 0 0 20px;
+  padding: 20px 0 18px;
+}
+
+.me-section .section-title h2 {
+  font-size: 2.12rem;
 }
 
 .me-card {
-  background: var(--card-surface);
-  border: 1px solid var(--card-border);
+  background: rgba(33, 27, 49, 0.9);
+  border: 1px solid rgba(173, 141, 229, 0.28);
   border-radius: 30px;
-  padding: 28px 30px 30px;
-  box-shadow: var(--card-shadow);
+  padding: 25px 27px 27px;
+  box-shadow: 0 8px 16px rgba(5, 1, 16, 0.16);
 }
 
 .me-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
-  padding-bottom: 18px;
+  gap: 16px;
+  padding-bottom: 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 
 .me-header-main {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 13px;
   min-width: 0;
 }
 
 .me-header-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
+  width: 40px;
+  height: 40px;
+  border-radius: 13px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -46,27 +50,27 @@
 
 .me-title-wrap h2 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.08rem;
   font-weight: 700;
 }
 
 .me-title-wrap p {
   margin: 6px 0 0;
   color: #aeb5cb;
-  font-size: 0.98rem;
+  font-size: 0.88rem;
 }
 
 .me-date {
   color: #b48cff;
-  font-size: 0.96rem;
+  font-size: 0.86rem;
   white-space: nowrap;
 }
 
 .me-content p {
-  margin: 0 0 18px;
+  margin: 0 0 16px;
   color: #eef1fb;
-  font-size: 0.98rem;
-  line-height: 1.85;
+  font-size: 0.88rem;
+  line-height: 1.72;
 }
 
 .me-content p:last-child {
@@ -76,7 +80,7 @@
 @media (max-width: 1100px) {
   .me-section {
     margin-top: 0;
-    padding: 0 0 18px;
+    padding: 18px 0 16px;
   }
 
   .me-card {
@@ -88,27 +92,27 @@
 @media (max-width: 767px) {
   .me-section {
     margin-top: 0;
-    padding: 0 0 16px;
+    padding: 18px 0 16px;
   }
 
   .me-card {
-    border-radius: 24px;
-    padding: 22px 18px 24px;
+    border-radius: 22px;
+    padding: 20px 16px 22px;
   }
 
   .me-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 18px;
+    gap: 11px;
+    margin-bottom: 16px;
   }
 
   .me-title-wrap h2 {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
   }
 
   .me-content p {
-    font-size: 0.9rem;
-    line-height: 1.78;
+    font-size: 0.81rem;
+    line-height: 1.68;
   }
 }

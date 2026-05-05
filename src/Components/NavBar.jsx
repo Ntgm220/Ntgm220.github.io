@@ -46,7 +46,8 @@ export const NavBar = () => {
         };
 
         const onHashChange = () => {
-            setActiveLink(getLinkFromHash(window.location.hash));
+            const nextLink = getLinkFromHash(window.location.hash);
+            setActiveLink((currentLink) => (currentLink === nextLink ? currentLink : nextLink));
         };
 
         const onResize = () => {
@@ -57,7 +58,7 @@ export const NavBar = () => {
 
         onHashChange();
         onScroll();
-        window.addEventListener("scroll", onScroll);
+        window.addEventListener("scroll", onScroll, { passive: true });
         window.addEventListener("hashchange", onHashChange);
         window.addEventListener("resize", onResize);
 
