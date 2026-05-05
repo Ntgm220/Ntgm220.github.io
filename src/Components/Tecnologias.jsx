@@ -1,77 +1,90 @@
-import { Col, Container, Row } from "react-bootstrap";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import {
+    SiClickup,
+    SiDocker,
+    SiDotnet,
+    SiGit,
+    SiGithub,
+    SiGraphql,
+    SiJavascript,
+    SiJira,
+    SiLinkedin,
+    SiMongodb,
+    SiNodedotjs,
+    SiOpenproject,
+    SiPostgresql,
+    SiReact,
+    SiSqlite,
+    SiVite,
+} from "react-icons/si";
+import {
+    TbBrandAzure,
+    TbBrandCSharp,
+    TbBrandFigma,
+    TbBrandVscode,
+    TbDatabase,
+} from "react-icons/tb";
 import "../StyleSheets/tecnologia.css";
 
+const developmentTechnologies = [
+    { name: "C#", Icon: TbBrandCSharp, color: "#a784ff" },
+    { name: "GraphQL", Icon: SiGraphql, color: "#ff4fc5" },
+    { name: "JavaScript", Icon: SiJavascript, color: "#f7df1e" },
+    { name: "MongoDB", Icon: SiMongodb, color: "#47a248" },
+    { name: ".NET", Icon: SiDotnet, color: "#7c4dff" },
+    { name: "Node.js", Icon: SiNodedotjs, color: "#68a063" },
+    { name: "PostgreSQL", Icon: SiPostgresql, color: "#4d81c2" },
+    { name: "React", Icon: SiReact, color: "#61dafb" },
+    { name: "SQLite", Icon: SiSqlite, color: "#4db1ff" },
+    { name: "SQL Server", Icon: TbDatabase, color: "#ff6b81" },
+    { name: "Vite", Icon: SiVite, color: "#b184ff" },
+];
+
+const toolsTechnologies = [
+    { name: "Azure", Icon: TbBrandAzure, color: "#59b3ff" },
+    { name: "Azure DevOps", Icon: TbBrandAzure, color: "#5c8dff" },
+    { name: "ClickUp", Icon: SiClickup, color: "#8b5cf6" },
+    { name: "Docker", Icon: SiDocker, color: "#2496ed" },
+    { name: "Figma", Icon: TbBrandFigma, color: "#f24e1e" },
+    { name: "Git", Icon: SiGit, color: "#f1502f" },
+    { name: "GitHub", Icon: SiGithub, color: "#f5f7ff" },
+    { name: "Jira", Icon: SiJira, color: "#2684ff" },
+    { name: "LinkedIn", Icon: SiLinkedin, color: "#0a66c2" },
+    { name: "OpenProject", Icon: SiOpenproject, color: "#1461ff" },
+    { name: "VS Code", Icon: TbBrandVscode, color: "#2f9cf4" },
+];
+
+const TechnologyItem = ({ name, Icon, color }) => (
+    <div className="tech-item">
+        <div className="tech-icon-shell">
+            <Icon className="tech-icon" style={{ color }} aria-hidden="true" />
+        </div>
+        <h5>{name}</h5>
+    </div>
+);
+
+const TechnologyGrid = ({ items }) => (
+    <div className="tech-grid">
+        {items.map((item) => (
+            <TechnologyItem key={item.name} {...item} />
+        ))}
+    </div>
+);
+
 export const Tecnologias = () => {
-    const developmentRaw = import.meta.glob("../assets/Logo/Development/*.{png,jpg,jpeg,svg}", { eager: true });
-    const toolsRaw = import.meta.glob("../assets/Logo/Tools/*.{png,jpg,jpeg,svg}", { eager: true });
-
-    const formatImages = (rawObj) => {
-        return Object.fromEntries(
-            Object.entries(rawObj).map(([path, module]) => {
-                const fileName = path.split("/").pop().split(".")[0].replace("-Logo", "");
-                return [fileName, module.default];
-            })
-        );
-    };
-
-    const images = {
-        development: formatImages(developmentRaw),
-        tools: formatImages(toolsRaw),
-    };
-
-    const carouselSettings = {
-        responsive: {
-            desktop: { breakpoint: { max: 3000, min: 1024 }, items: 4 },
-            tablet: { breakpoint: { max: 1024, min: 464 }, items: 2 },
-            mobile: { breakpoint: { max: 464, min: 0 }, items: 1 },
-        },
-        autoPlay: true,
-        autoPlaySpeed: 1,
-        infinite: true,
-        rewind: false,
-        customTransition: "transform 2500ms linear",
-        transitionDuration: 2500,
-        arrows: false,
-        pauseOnHover: false,
-        containerClass: "carousel-container",
-        itemClass: "carousel-item-padding",
-    };
-
     return (
         <section className="tecnologias">
-            <Container>
-                <Row>
-                    <Col>
-                        <div className="title-box" id="tecnologias">
-                            <h1>Tecnologias</h1>
-                        </div>
-                        <div className="tecno-bx">
-                            <p>Stack Tecnologico</p>
+            <div className="page-shell">
+                <div className="title-box" id="tecnologias">
+                    <h1>Tecnologias</h1>
+                </div>
+                <div className="tecno-bx">
+                    <p>Stack Tecnologico</p>
+                    <TechnologyGrid items={developmentTechnologies} />
 
-                            <Carousel {...carouselSettings}>
-                                {Object.entries(images.development).map(([name, url]) => (
-                                    <div className="item" key={name}>
-                                        <img src={url} alt={name} />
-                                        <h5>{name.replace("_", " ")}</h5>
-                                    </div>
-                                ))}
-                            </Carousel>
-
-                            <p>Infraestructura, DevOps y Gestion</p>
-                            <Carousel {...carouselSettings}>
-                                {Object.entries(images.tools).map(([name, url]) => (
-                                    <div className="item" key={name}>
-                                        <img src={url} alt={name} />
-                                        <h5>{name.replace("_", " ")}</h5>
-                                    </div>
-                                ))}
-                            </Carousel>
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
+                    <p>Infraestructura, DevOps y Gestion</p>
+                    <TechnologyGrid items={toolsTechnologies} />
+                </div>
+            </div>
         </section>
     );
 };

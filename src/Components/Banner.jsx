@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import { ArrowRightCircle } from "react-bootstrap-icons";
-import MePic from "../assets/Images/My_Picture.jpeg";
+import { HiOutlineArrowRightCircle } from "react-icons/hi2";
+import MePic from "../assets/Images/My_Picture.webp";
 import "../StyleSheets/banner.css";
 
-export const Banner = () => {
+const roles = ["Ingeniero de Software", "Desarrollador Backend", "Desarrollo Agile"];
+
+const RotatingRole = () => {
     const [loopNum, setLoopNum] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
     const [delta, setDelta] = useState(150 - Math.random() * 100);
     const [text, setText] = useState("");
-
-    const toRotate = ["Ingeniero de Software", "Desarrollador Backend", "Desarrollo Agile"];
 
     useEffect(() => {
         const ticker = setInterval(() => {
@@ -23,8 +22,8 @@ export const Banner = () => {
     }, [text, delta]);
 
     const tick = () => {
-        const i = loopNum % toRotate.length;
-        const fullText = toRotate[i];
+        const i = loopNum % roles.length;
+        const fullText = roles[i];
         const updatedText = isDeleting
             ? fullText.substring(0, text.length - 1)
             : fullText.substring(0, text.length + 1);
@@ -37,11 +36,15 @@ export const Banner = () => {
             setDelta(3000);
         } else if (isDeleting && updatedText === "") {
             setIsDeleting(false);
-            setLoopNum(loopNum + 1);
+            setLoopNum((currentLoop) => currentLoop + 1);
             setDelta(500);
         }
     };
 
+    return <span className="wrap">{text}</span>;
+};
+
+export const Banner = () => {
     const scrollToPageEnd = () => {
         window.scrollTo({
             top: document.documentElement.scrollHeight,
@@ -52,31 +55,40 @@ export const Banner = () => {
     return (
         <section className="banner">
             <div className="section-anchor" id="home" aria-hidden="true"></div>
-            <Container>
-                <Row className="align-items-start">
-                    <Col xs={12} xl={5}>
+            <div className="page-shell">
+                <div className="banner-grid">
+                    <div className="banner-media">
                         <div className="banner-image-wrapper">
                             <div className="banner-image-ring">
-                                <img src={MePic} alt="Randy portrait" className="banner-image" />
+                                <img
+                                    src={MePic}
+                                    alt="Randy portrait"
+                                    className="banner-image"
+                                    width="362"
+                                    height="362"
+                                    fetchPriority="high"
+                                    decoding="async"
+                                />
                             </div>
                         </div>
-                    </Col>
-                    <Col xs={12} xl={7}>
+                    </div>
+
+                    <div className="banner-copy">
                         <span className="banner-kicker">Disponible para crear soluciones robustas</span>
                         <h1>{`Hola, soy Randy`}</h1>
                         <h2>
-                            <span className="wrap">{text}</span>
+                            <RotatingRole />
                         </h2>
                         <p>
-                            Detrás de cada buen producto de software hay alguien que no se rinde. 
-                            Ese alguien soy yo. ¿Quieres saber cómo lo hago?
+                            Detras de cada buen producto de software hay alguien que no se rinde.
+                            Ese alguien soy yo. Quieres saber como lo hago?
                         </p>
                         <button className="banner-cta" onClick={scrollToPageEnd}>
-                            Contactame <ArrowRightCircle size={25} />
+                            Contactame <HiOutlineArrowRightCircle size={25} />
                         </button>
-                    </Col>
-                </Row>
-            </Container>
+                    </div>
+                </div>
+            </div>
         </section>
     );
 };

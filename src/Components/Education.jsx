@@ -1,10 +1,9 @@
-import { Container } from "react-bootstrap";
 import "../StyleSheets/education.css";
 
 export const Education = () => {
     return (
         <section className="education-section">
-            <Container>
+            <div className="page-shell">
                 <div className="section-title" id="educacion">
                     <h2>Educacion</h2>
                     <span></span>
@@ -19,11 +18,11 @@ export const Education = () => {
                         <div className="education-body">
                             <h3>Ingenieria en Software</h3>
                             <h4>Instituto Tecnologico de Santo Domingo (INTEC)</h4>
-                            <div className="education-meta">2023 - Presente (Estudiante de termino)</div>
+                            <div className="education-meta">2023 - Presente</div>
                         </div>
                     </article>
                 </div>
-            </Container>
+            </div>
         </section>
     );
 };

@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
-import GitHub from "../assets/Logo/Tools/GitHub-Logo.png";
-import LinkedIn from "../assets/Logo/Tools/LinkedInLogo.png";
-import MySiteLogo from "../assets/Images/MySiteLogo.png";
+import { useEffect, useRef, useState } from "react";
+import { SiGithub, SiLinkedin } from "react-icons/si";
+import MySiteLogo from "../assets/Images/MySiteLogo.webp";
 import "../StyleSheets/navBar.css";
 
 const getLinkFromHash = (hash) => {
@@ -12,9 +10,20 @@ const getLinkFromHash = (hash) => {
     return validLinks.includes(normalizedHash) ? normalizedHash : "home";
 };
 
+const navItems = [
+    { id: "conoceme", label: "Conoceme" },
+    { id: "tecnologias", label: "Tecnologias" },
+    { id: "projects", label: "Proyectos" },
+    { id: "educacion", label: "Educacion" },
+    { id: "idiomas", label: "Idiomas" },
+];
+
 export const NavBar = () => {
     const [activeLink, setActiveLink] = useState(() => getLinkFromHash(window.location.hash));
     const [scrolled, setScrolled] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
+    const scrolledRef = useRef(false);
+    const frameRef = useRef(0);
 
     useEffect(() => {
         if ("scrollRestoration" in window.history) {
@@ -22,26 +31,50 @@ export const NavBar = () => {
         }
 
         const onScroll = () => {
-            setScrolled(window.scrollY > 90);
+            if (frameRef.current) return;
+
+            frameRef.current = window.requestAnimationFrame(() => {
+                const nextScrolled = window.scrollY > 90;
+
+                if (scrolledRef.current !== nextScrolled) {
+                    scrolledRef.current = nextScrolled;
+                    setScrolled(nextScrolled);
+                }
+
+                frameRef.current = 0;
+            });
         };
 
         const onHashChange = () => {
             setActiveLink(getLinkFromHash(window.location.hash));
         };
 
+        const onResize = () => {
+            if (window.innerWidth > 1100) {
+                setMenuOpen(false);
+            }
+        };
+
         onHashChange();
         onScroll();
         window.addEventListener("scroll", onScroll);
         window.addEventListener("hashchange", onHashChange);
+        window.addEventListener("resize", onResize);
 
         return () => {
             window.removeEventListener("scroll", onScroll);
             window.removeEventListener("hashchange", onHashChange);
+            window.removeEventListener("resize", onResize);
+
+            if (frameRef.current) {
+                window.cancelAnimationFrame(frameRef.current);
+            }
         };
     }, []);
 
     const onUpdateActiveLink = (value) => {
         setActiveLink(value);
+        setMenuOpen(false);
     };
 
     const getNavOffset = () => {
@@ -105,92 +138,84 @@ export const NavBar = () => {
 
     const scrollToPageEnd = () => {
         setActiveLink("contact");
+        setMenuOpen(false);
         window.scrollTo({
             top: document.documentElement.scrollHeight,
             behavior: "smooth",
         });
     };
 
+    const handleNavClick = (event, sectionId) => {
+        event.preventDefault();
+        onUpdateActiveLink(sectionId);
+
+        if (sectionId === "projects" && window.innerWidth > 1100) {
+            scrollToProjects();
+            return;
+        }
+
+        scrollToSection(sectionId, "start");
+    };
+
     return (
-        <Navbar
-            expand="xl"
-            className={`${scrolled ? "scrolled" : ""} ${activeLink === "home" ? "is-home" : ""} ${activeLink === "contact" ? "is-contact" : ""}`}
+        <nav
+            className={`navbar ${scrolled ? "scrolled" : ""} ${activeLink === "home" ? "is-home" : ""} ${activeLink === "contact" ? "is-contact" : ""}`}
         >
-            <Container>
-                <Navbar.Brand href="#home" onClick={() => setActiveLink("home")}>
-                    <img className="brand-logo" src={MySiteLogo} alt="My Site Logo" />
-                </Navbar.Brand>
+            <div className="page-shell navbar-shell">
+                <a className="navbar-brand" href="#home" onClick={() => onUpdateActiveLink("home")}>
+                    <img
+                        className="brand-logo"
+                        src={MySiteLogo}
+                        alt="My Site Logo"
+                        width="72"
+                        height="72"
+                        decoding="async"
+                    />
+                </a>
 
-                <Navbar.Toggle aria-controls="basic-navbar-nav">
+                <button
+                    type="button"
+                    className={`navbar-toggler ${menuOpen ? "" : "collapsed"}`}
+                    aria-controls="site-navigation"
+                    aria-expanded={menuOpen}
+                    aria-label="Abrir menu"
+                    onClick={() => setMenuOpen((currentValue) => !currentValue)}
+                >
                     <span className="navbar-toggler-icon"></span>
-                </Navbar.Toggle>
+                </button>
 
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
-                        <Nav.Link
-                            href="#conoceme"
-                            className={activeLink === "conoceme" ? "active navbar-link" : "navbar-link"}
-                            onClick={() => onUpdateActiveLink("conoceme")}
-                        >
-                            Conoceme
-                        </Nav.Link>
-                        <Nav.Link
-                            href="#tecnologias"
-                            className={activeLink === "tecnologias" ? "active navbar-link" : "navbar-link"}
-                            onClick={() => onUpdateActiveLink("tecnologias")}
-                        >
-                            Tecnologias
-                        </Nav.Link>
-                        <Nav.Link
-                            href="#projects"
-                            className={activeLink === "projects" ? "active navbar-link" : "navbar-link"}
-                            onClick={(event) => {
-                                event.preventDefault();
-                                onUpdateActiveLink("projects");
-                                if (window.innerWidth > 1100) {
-                                    scrollToProjects();
-                                    return;
-                                }
-
-                                scrollToSection("projects", "start");
-                            }}
-                        >
-                            Proyectos
-                        </Nav.Link>
-                        <Nav.Link
-                            href="#educacion"
-                            className={activeLink === "educacion" ? "active navbar-link" : "navbar-link"}
-                            onClick={() => onUpdateActiveLink("educacion")}
-                        >
-                            Educacion
-                        </Nav.Link>
-                        <Nav.Link
-                            href="#idiomas"
-                            className={activeLink === "idiomas" ? "active navbar-link" : "navbar-link"}
-                            onClick={() => onUpdateActiveLink("idiomas")}
-                        >
-                            Idiomas
-                        </Nav.Link>
-                    </Nav>
+                <div
+                    id="site-navigation"
+                    className={`navbar-collapse ${menuOpen ? "is-open" : ""}`}
+                >
+                    <div className="nav navbar-nav">
+                        {navItems.map((item) => (
+                            <a
+                                key={item.id}
+                                href={`#${item.id}`}
+                                className={activeLink === item.id ? "active nav-link navbar-link" : "nav-link navbar-link"}
+                                onClick={(event) => handleNavClick(event, item.id)}
+                            >
+                                {item.label}
+                            </a>
+                        ))}
+                    </div>
 
                     <span className="navbar-text">
                         <div className="social-icon">
-                            <a href="https://github.com/Ntgm220" target="_blank" rel="noreferrer"  aria-label="GitHub">
-                                <img src={GitHub} alt="" />
+                            <a href="https://github.com/Ntgm220" target="_blank" rel="noreferrer" aria-label="GitHub">
+                                <SiGithub aria-hidden="true" />
                             </a>
                             <a href="https://www.linkedin.com/in/randy-made" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                                <img src={LinkedIn} alt="" />
+                                <SiLinkedin aria-hidden="true" />
                             </a>
                         </div>
-                        <button
-                            className="vvd"
-                            onClick={scrollToPageEnd}
-                        >
+                        <button className="vvd" onClick={scrollToPageEnd}>
                             <span>Contactame</span>
                         </button>
                     </span>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+                </div>
+            </div>
+        </nav>
     );
 };

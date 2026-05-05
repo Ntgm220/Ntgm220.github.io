@@ -9,12 +9,12 @@ nav.navbar {
   z-index: 9999;
   transition: background-color 0.32s ease-in-out, padding 0.32s ease-in-out, transform 0.32s ease-in-out, opacity 0.32s ease-in-out;
   background-color: #110c15c5;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(8px);
 }
 
 nav.navbar.scrolled {
   padding: 10px 0;
-  background-color: #1212128e;
+  background-color: rgba(18, 18, 18, 0.9);
 }
 
 nav.navbar.nav-hidden {
@@ -104,7 +104,24 @@ nav.navbar .navbar-text {
   gap: 16px;
 }
 
-nav.navbar .container {
+nav.navbar .navbar-shell {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+nav.navbar .navbar-collapse {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  gap: 24px;
+}
+
+nav.navbar .navbar-nav {
+  display: flex;
   align-items: center;
 }
 
@@ -156,12 +173,13 @@ nav.navbar.is-contact .nav-link {
   margin-right: 0;
 }
 
-.social-icon a img {
-  width: 25px;
+.social-icon a svg {
+  width: 23px;
+  height: 23px;
   position: relative;
   z-index: 1;
-  transition: transform 0.25s ease-in-out, filter 0.22s;
-  filter: invert(1);
+  transition: transform 0.25s ease-in-out, color 0.22s;
+  color: #ffffff;
 }
 
 .social-icon a::before {
@@ -179,16 +197,17 @@ nav.navbar.is-contact .nav-link {
   transform: scale(1);
 }
 
-.social-icon a:hover img {
+.social-icon a:hover svg {
   border-color: rgba(255, 255, 255, 0.55);
   transform: translateY(0px);
-  filter: invert(0);
+  color: #121212;
 }
 
 /* ======  Navbar Toggler (Hamburguesa)  ====== */
 nav.navbar .navbar-toggler {
   border: none;
   margin-bottom: 0;
+  display: none;
 }
 
 nav.navbar .navbar-toggler-icon {
@@ -283,12 +302,23 @@ nav.navbar .navbar-toggler:not(.collapsed) .navbar-toggler-icon::after {
   }
 
   nav.navbar .navbar-collapse {
+    display: none;
+    width: 100%;
     margin-top: 18px;
     padding: 18px;
     border: 1px solid rgba(187, 0, 255, 0.2);
     border-radius: 18px;
     background: linear-gradient(180deg, rgba(29, 12, 43, 0.96) 0%, rgba(14, 8, 22, 0.96) 100%);
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+  }
+
+  nav.navbar .navbar-collapse.is-open {
+    display: block;
+  }
+
+  nav.navbar .navbar-nav {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   nav.navbar .navbar-text {
@@ -313,7 +343,7 @@ nav.navbar .navbar-toggler:not(.collapsed) .navbar-toggler-icon::after {
     padding: 10px 0;
   }
 
-  nav.navbar .container {
+  nav.navbar .navbar-shell {
     max-width: 100%;
     padding-inline: 18px;
     display: flex;
@@ -334,6 +364,7 @@ nav.navbar .navbar-toggler:not(.collapsed) .navbar-toggler-icon::after {
   }
 
   nav.navbar .navbar-toggler {
+    display: inline-flex;
     margin-left: auto;
     margin-right: 2px;
     padding: 10px 12px;
@@ -348,6 +379,8 @@ nav.navbar .navbar-toggler:not(.collapsed) .navbar-toggler-icon::after {
   }
 
   nav.navbar .navbar-collapse {
+    display: none;
+    width: 100%;
     margin-top: 16px;
     padding: 18px 18px 16px;
     border: 1px solid rgba(187, 0, 255, 0.18);
@@ -355,9 +388,18 @@ nav.navbar .navbar-toggler:not(.collapsed) .navbar-toggler-icon::after {
     background: linear-gradient(180deg, rgba(18, 16, 24, 0.98) 0%, rgba(7, 8, 12, 0.98) 100%);
   }
 
+  nav.navbar .navbar-collapse.is-open {
+    display: block;
+  }
+
   nav.navbar .nav-link {
     padding-inline: 0 !important;
     padding-block: 0.6rem !important;
+  }
+
+  nav.navbar .navbar-nav {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   nav.navbar .navbar-text {

@@ -1,10 +1,9 @@
-import { Col, Container, Row } from "react-bootstrap";
 import "../StyleSheets/lang.css";
 
 const languages = [
     {
         code: "ES",
-        name: "Español",
+        name: "Espanol",
         level: "Nativo",
         width: "100%",
     },
@@ -19,15 +18,15 @@ const languages = [
 export const Lang = () => {
     return (
         <section className="lang-section">
-            <Container>
+            <div className="page-shell">
                 <div className="section-title" id="idiomas">
                     <h2>Idiomas</h2>
                     <span></span>
                 </div>
 
-                <Row className="g-4">
+                <div className="lang-grid">
                     {languages.map((language) => (
-                        <Col xs={12} md={6} key={language.code}>
+                        <div className="lang-grid-item" key={language.code}>
                             <div className="lang-card">
                                 <div className="lang-top">
                                     <span className="lang-badge">{language.code}</span>
@@ -40,10 +39,10 @@ export const Lang = () => {
                                     <div className="lang-bar-fill" style={{ width: language.width }}></div>
                                 </div>
                             </div>
-                        </Col>
+                        </div>
                     ))}
-                </Row>
-            </Container>
+                </div>
+            </div>
         </section>
     );
 };

@@ -1,10 +1,9 @@
-import { Container } from "react-bootstrap";
 import "../StyleSheets/contact.css";
 
 export const Contact = () => {
     return (
         <section className="contact-section">
-            <Container>
+            <div className="page-shell">
                 <div className="section-title" id="contact">
                     <h2>Contacto</h2>
                     <span></span>
@@ -26,7 +25,7 @@ export const Contact = () => {
                         Randymade220@gmail.com
                     </a>
                 </div>
-            </Container>
+            </div>
         </section>
     );
 };

@@ -1,5 +1,4 @@
-import { Container } from "react-bootstrap";
-import MySiteLogo from "../assets/Images/MySiteLogo.png";
+import MySiteLogo from "../assets/Images/MySiteLogo.webp";
 import "../StyleSheets/footer.css";
 
 export const Footer = () => {
@@ -7,7 +6,7 @@ export const Footer = () => {
 
     return (
         <footer className="site-footer">
-            <Container>
+            <div className="page-shell">
                 <div className="footer-shell">
                     <div className="footer-brand">
                         <a className="footer-logo-link" href="#home" aria-label="Volver al inicio">
@@ -19,7 +18,7 @@ export const Footer = () => {
                         </div>
                     </div>
                 </div>
-            </Container>
+            </div>
         </footer>
     );
 };

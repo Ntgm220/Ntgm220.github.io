@@ -11,7 +11,6 @@
   border-radius: 30px;
   padding: 28px 30px 30px;
   box-shadow: var(--card-shadow);
-  backdrop-filter: blur(16px);
 }
 
 .me-header {
@@ -48,7 +47,7 @@
 .me-title-wrap h2 {
   margin: 0;
   font-size: 1.2rem;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .me-title-wrap p {
