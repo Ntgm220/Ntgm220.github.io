@@ -5,7 +5,7 @@ export const Education = () => {
         <section className="education-section">
             <div className="page-shell">
                 <div className="section-title" id="educacion">
-                    <h2>Educacion</h2>
+                    <h2>Educación </h2>
                     <span></span>
                 </div>
 
@@ -16,8 +16,8 @@ export const Education = () => {
                         </div>
 
                         <div className="education-body">
-                            <h3>Ingenieria en Software</h3>
-                            <h4>Instituto Tecnologico de Santo Domingo (INTEC)</h4>
+                            <h3>Ingeniería en Software</h3>
+                            <h4>Instituto Tecnológico de Santo Domingo (INTEC)</h4>
                             <div className="education-meta">2023 - Presente</div>
                         </div>
                     </article>

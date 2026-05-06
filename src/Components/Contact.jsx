@@ -13,8 +13,7 @@ export const Contact = () => {
                     <div className="contact-intro">
                         <h3>Hablemos</h3>
                         <p>
-                            Si quieres conversar sobre una oportunidad, colaborar en un proyecto o simplemente
-                            saludar, puedes escribirme directamente al correo que aparece debajo.
+                            Si quieres conversar sobre una oportunidad, colaborar en un proyecto o simplemente saludar, puedes escribirme directamente al correo que aparece debajo.
                         </p>
                     </div>
                     <p>

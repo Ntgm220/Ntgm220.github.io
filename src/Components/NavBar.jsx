@@ -11,10 +11,10 @@ const getLinkFromHash = (hash) => {
 };
 
 const navItems = [
-    { id: "conoceme", label: "Conoceme" },
-    { id: "tecnologias", label: "Tecnologias" },
+    { id: "conoceme", label: "Conóceme" },
+    { id: "tecnologias", label: "Tecnologías" },
     { id: "projects", label: "Proyectos" },
-    { id: "educacion", label: "Educacion" },
+    { id: "educacion", label: "Educación" },
     { id: "idiomas", label: "Idiomas" },
 ];
 
@@ -212,7 +212,7 @@ export const NavBar = () => {
                             </a>
                         </div>
                         <button className="vvd" onClick={scrollToPageEnd}>
-                            <span>Contactame</span>
+                            <span>Contáctame</span>
                         </button>
                     </span>
                 </div>

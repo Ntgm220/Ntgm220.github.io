@@ -3,13 +3,13 @@ import "../StyleSheets/lang.css";
 const languages = [
     {
         code: "ES",
-        name: "Espanol",
+        name: "Español",
         level: "Nativo",
         width: "100%",
     },
     {
         code: "EN",
-        name: "Ingles",
+        name: "Inglés",
         level: "Avanzado - C1",
         width: "88%",
     },

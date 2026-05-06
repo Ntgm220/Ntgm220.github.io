@@ -3,7 +3,7 @@ import { HiOutlineArrowRightCircle } from "react-icons/hi2";
 import MePic from "../assets/Images/My_Picture.webp";
 import "../StyleSheets/banner.css";
 
-const roles = ["Ingeniero de Software", "Desarrollador Backend", "Desarrollo Agile"];
+const roles = ["Ingeniero de Software", "Desarrollador Backend", "Desarrollo Ágil"];
 
 const RotatingRole = memo(() => {
     const [loopNum, setLoopNum] = useState(0);
@@ -79,11 +79,10 @@ export const Banner = () => {
                             <RotatingRole />
                         </h2>
                         <p>
-                            Detras de cada buen producto de software hay alguien que no se rinde.
-                            Ese alguien soy yo. Quieres saber como lo hago?
+                            Detrás de cada buen producto de software hay alguien que no se rinde. Ese alguien soy yo. ¿Quieres saber cómo lo hago?
                         </p>
                         <button className="banner-cta" onClick={scrollToPageEnd}>
-                            Contactame <HiOutlineArrowRightCircle size={25} />
+                            Contáctame <HiOutlineArrowRightCircle size={25} />
                         </button>
                     </div>
                 </div>

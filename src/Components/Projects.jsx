@@ -4,28 +4,28 @@ const projects = [
     {
         title: "CarniCheck",
         description:
-            "Sistema para la inspeccion de establecimientos que manejan el uso de carnicos para su venta, almacenamiento, produccion o sacrificio.",
+            "Sistema para la inspección de establecimientos que manejan el uso de cárnicos para su venta, almacenamiento, producción o sacrificio.",
         stack: ["C#", "React", "NodeJs", "SQL Server"],
         tag: "Proyecto Universitario",
     },
     {
         title: "API Universitaria",
         description:
-            "API REST desarrollada para la gestion integral de un sistema universitario, orientada a la administracion de estudiantes, docentes e inscripciones.",
+            "API REST desarrollada para la gestión integral de un sistema universitario, orientada a la administración de estudiantes, docentes e inscripciones.",
         stack: ["C#", "SQL Server", "Auth0"],
         tag: "Proyecto Universitario",
     },
     {
         title: "Business Dashboard",
         description:
-            "Sistema web tipo dashboard para visualizar y gestionar reportes de venta mediante una interfaz moderna, con frontend interactivo, API backend, autenticacion por tokens y manejo seguro de contrasenas.",
+            "Sistema web tipo dashboard para visualizar y gestionar reportes de venta mediante una interfaz moderna, con frontend interactivo, API backend, autenticación por tokens y manejo seguro de contraseñas.",
         stack: ["C#", "React", "SQL Server", "JWT", "BCrypt"],
         tag: "Proyecto Freelancer",
     },
     {
         title: "Compilador C#",
         description:
-            "Interprete de lenguaje de programacion personalizado creado con ANTLR4, con expresiones aritmeticas, estructuras de control y funciones recursivas.",
+            "Intérprete de lenguaje de programación personalizado creado con ANTLR4, con expresiones aritméticas, estructuras de control y funciones recursivas.",
         stack: ["C#", "ANTLR4"],
         tag: "Proyecto Universitario",
     },
@@ -69,7 +69,7 @@ export const Projects = () => {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            Mas proyectos aqui
+                            Más proyectos aquí
                         </a>
                     </div>
                 </div>
