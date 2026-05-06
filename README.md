@@ -6,6 +6,8 @@ Aquí tienes una versión más limpia y profesional, lista para GitHub:
 
 Portafolio personal como desarrollador backend. Este proyecto presenta mi perfil, habilidades técnicas y algunos de los proyectos en los que he trabajado.
 
+Puedes acceder al portafolio en la siguiente direccion: https://ntgm220.github.io
+
 ## Sobre mí
 
 Soy estudiante de Ingeniería de Software con enfoque en desarrollo backend y soluciones en la nube. Me interesa construir sistemas escalables, seguros y mantenibles, y tengo facilidad para adaptarme a nuevos desafíos y tecnologías.
